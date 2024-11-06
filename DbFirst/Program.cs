@@ -3,7 +3,9 @@
 using DbFirst.DAL;
 using Microsoft.EntityFrameworkCore;
 
-using (var _context = new AppDbContext())
+DbContextInitializer.Build();
+
+using (var _context = new AppDbContext(DbContextInitializer.optionsBuilder.Options))
 {
     var product = await _context.Products.ToListAsync();
 
